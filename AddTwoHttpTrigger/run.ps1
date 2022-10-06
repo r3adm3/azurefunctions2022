@@ -12,6 +12,8 @@ Write-Host "PowerShell HTTP trigger function processed a request."
 $name = $Request.Query.Name
 $val1 = $Request.Body.val1
 $val2 = $Request.Body.val2
+
+# Set default values so function can always run. 
 if (-not $name) {
     $name = $Request.Body.Name
 }
@@ -36,4 +38,5 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
     Body = $body
 })
 
+# emit line in logs that contains the result of adding two numbers
 write-host "Added numbers: $myresult"
